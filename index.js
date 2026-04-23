@@ -25,12 +25,21 @@ const wallet3 = {
 // ==========================================
 // 1. Crie a Função de Depósito
 // ==========================================
-function depositBTC(btcValue, wallet) {}
+function depositBTC(btcValue, wallet) {
+  const satoshis = Math.round(btcValue * CONVERSION_FACTOR);
+  wallet.satoshiCredits += satoshis;
+}
 
 // ==========================================
 // 2. Crie a Função de Saque
 // ==========================================
-function withdrawBTC(btcValue, wallet) {}
+function withdrawBTC(btcValue, wallet) {
+  const satoshis = Math.round(btcValue * CONVERSION_FACTOR);
+
+  if (wallet.satoshiCredits >= satoshis) {
+    wallet.satoshiCredits -= satoshis;
+  }
+}
 
 
 function unitTests() {
